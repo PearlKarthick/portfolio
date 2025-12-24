@@ -91,6 +91,16 @@ section h3 {
 #contact p {
     margin: 8px 0;
 }
+#contact a {
+    color: #34346d;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+#contact a:hover {
+    text-decoration: underline;
+}
+
 
 /* RESPONSIVE */
 @media (max-width: 600px) {
