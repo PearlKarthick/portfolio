@@ -1,9 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Muthu Karthick | Power Platform Developer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- ========= Inline CSS (no external dependencies) ========= -->
   <style>
     /* ========= THEME ========= */
     :root{
@@ -30,18 +33,25 @@
 
     /* ========= LAYOUT ========= */
     .mk-wrapper{display:flex; min-height:100vh;}
+
+    /* Sidebar */
     .mk-sidebar{
       width:280px; flex:0 0 280px;
       background: linear-gradient(180deg, var(--mk-sidebar), var(--mk-sidebar-2));
       color:#e5e7eb;
       position:sticky; top:0; height:100vh; overflow:auto;
       padding:24px 16px; box-shadow:0 10px 30px rgba(0,0,0,.25);
+      z-index: 2;
     }
-    .mk-brand{display:flex; align-items:center; gap:12px; padding:12px 10px; border-radius:12px;
-      background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08);}
-    .mk-avatar{width:48px; height:48px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    .mk-brand{
+      display:flex; align-items:center; gap:12px; padding:12px 10px; border-radius:12px;
+      background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08);
+    }
+    .mk-avatar{
+      width:48px; height:48px; border-radius:50%; display:flex; align-items:center; justify-content:center;
       background: linear-gradient(135deg, var(--mk-primary), var(--mk-primary-2)); color:#fff; font-weight:700; letter-spacing:1px;
-      box-shadow:0 6px 16px rgba(79,70,229,.35);}
+      box-shadow:0 6px 16px rgba(79,70,229,.35);
+    }
     .mk-name{font-weight:700; margin:0;}
     .mk-role{font-size:.9rem; margin:0; color:#cbd5e1;}
 
@@ -56,7 +66,7 @@
     .mk-social a{color:#cbd5e1; margin-right:12px; font-size:1.1rem; text-decoration:none;}
     .mk-social a:hover{color:#fff;}
 
-    .mk-content{flex:1; padding-left:280px;}
+    .mk-content{flex:1; padding-left:280px; position:relative; z-index:1;}
     .mk-section{
       max-width:1000px; margin:28px auto; background:var(--mk-surface); padding:30px 28px;
       border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,.08); position:relative;
@@ -67,3 +77,23 @@
     .hint{color:var(--mk-muted); font-size:.95rem;}
 
     /* Hero */
+    .mk-hero{
+      padding:64px 28px;
+      background:
+        radial-gradient(1200px 400px at 10% 10%, var(--mk-ring), transparent 60%),
+        radial-gradient(1200px 500px at 90% 0%, #ecfeff, transparent 60%),
+        linear-gradient(135deg, #eef2ff, #ffffff);
+      border-radius:18px; box-shadow:0 12px 36px rgba(79,70,229,.12);
+    }
+    .mk-hero h1{font-size:2.2rem; margin:0 0 .35rem;}
+    .subtitle{font-weight:500; color:var(--mk-muted);}
+
+    /* Badges */
+    .badge{
+      display:inline-block; margin-right:8px; margin-bottom:8px; padding:.55rem .7rem; border-radius:999px; font-weight:600;
+    }
+    .text-bg-primary{background:#4f46e5; color:#fff;}
+    .text-bg-success{background:#10b981; color:#fff;}
+    .text-bg-info{background:#0ea5e9; color:#fff;}
+    .text-bg-secondary{background:#64748b; color:#fff;}
+    .text-bg-warning{background:#f59e0b; color:#111827;}
