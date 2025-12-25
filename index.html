@@ -6,7 +6,7 @@
   <title>Muthu Karthick | Power Platform Developer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- ===== CSS (converted from your React page styles) ===== -->
+  <!-- ===== CSS (self-contained) ===== -->
   <style>
     /* Color system */
     :root {
@@ -33,70 +33,26 @@
 
     /* Header Navigation — right aligned, a little bit down, with rich hover */
     .header__nav {
-      /* layout & position */
-      display: flex;
-      gap: 14px;
-      justify-content: flex-end; /* align links to the right */
-      align-items: center;
-
-      /* spacing: push it a bit down from the top of the hero */
-      margin: 18px auto 14px; /* top, horizontal auto, bottom */
-      max-width: 980px;
-      padding: 10px 14px;
-
-      /* look & feel */
+      display: flex; gap: 14px; justify-content: flex-end; align-items: center;
+      margin: 18px auto 14px; max-width: 980px; padding: 10px 14px;
       background: rgba(11, 16, 32, 0.45);
       backdrop-filter: saturate(120%) blur(6px);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-
-      /* optional subtle drop shadow */
+      border: 1px solid var(--border); border-radius: 12px;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-      position: sticky;
-      top: 0;
-      z-index: 10;
+      position: sticky; top: 0; z-index: 10;
     }
 
-    /* Individual links */
     .header__nav a {
-      color: var(--muted);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      padding: 8px 10px;
-      border-radius: 8px;
-      transition:
-        color 140ms ease,
-        background-color 140ms ease,
-        transform 140ms ease;
+      color: var(--muted); text-decoration: none; font-weight: 600; font-size: 0.95rem;
+      padding: 8px 10px; border-radius: 8px;
+      transition: color 140ms ease, background-color 140ms ease, transform 140ms ease;
     }
+    .header__nav a:hover { color: var(--accent); background: rgba(96, 165, 250, 0.10); transform: translateY(-1px); }
+    .header__nav:hover a { color: var(--accent); background: rgba(96, 165, 250, 0.06); }
 
-    /* Per‑link hover */
-    .header__nav a:hover {
-      color: var(--accent);
-      background: rgba(96, 165, 250, 0.10);
-      transform: translateY(-1px);
-    }
-
-    /* Hover the entire nav: make ALL links glow */
-    .header__nav:hover a { color: var(--accent); }
-
-    /* Optional: when hovering nav, also add a subtle background to all links */
-    .header__nav:hover a { background: rgba(96, 165, 250, 0.06); }
-
-    /* Mobile tweaks: keep it readable and wrapped */
     @media (max-width: 640px) {
-      .header__nav {
-        flex-wrap: wrap;
-        justify-content: flex-end; /* still right aligned on small screens */
-        margin: 14px auto 12px;
-        padding: 8px 10px;
-        gap: 10px;
-      }
-      .header__nav a {
-        font-size: 0.9rem;
-        padding: 6px 8px;
-      }
+      .header__nav { flex-wrap: wrap; justify-content: flex-end; margin: 14px auto 12px; padding: 8px 10px; gap: 10px; }
+      .header__nav a { font-size: 0.9rem; padding: 6px 8px; }
     }
 
     /* Utilities */
@@ -125,22 +81,13 @@
     /* Chips / Tags */
     .chips { display: flex; flex-wrap: wrap; gap: 10px; padding: 0; list-style: none; }
     .chip {
-      background: var(--panel-2);
-      border: 1px solid var(--border);
-      padding: 8px 12px;
-      border-radius: 999px;
-      color: var(--text);
-      font-size: 0.95rem;
+      background: var(--panel-2); border: 1px solid var(--border);
+      padding: 8px 12px; border-radius: 999px; color: var(--text); font-size: 0.95rem;
     }
-
     .tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 4px 0 0; }
     .tag {
-      background: #0c1738;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      padding: 4px 10px;
-      border-radius: 999px;
-      font-size: 0.85rem;
+      background: #0c1738; border: 1px solid var(--border); color: var(--muted);
+      padding: 4px 10px; border-radius: 999px; font-size: 0.85rem;
     }
 
     /* Grid */
@@ -148,36 +95,22 @@
 
     /* Card */
     .card {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 16px 16px 18px;
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+      background: var(--panel); border: 1px solid var(--border); border-radius: 12px;
+      padding: 16px 16px 18px; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
     }
     .card__header { margin-bottom: 4px; }
     .card__title { margin: 0; font-size: 1.15rem; color: var(--accent); }
     .card__summary { margin: 10px 0 8px; }
-
-    /* A clean list style for highlights and certs */
     .list { margin: 8px 0 0; padding-left: 18px; }
     .list li { margin: 6px 0; }
 
     /* Timeline */
     .timeline { position: relative; margin: 10px 0; padding-left: 20px; }
-    .timeline::before {
-      content: "";
-      position: absolute;
-      top: 0; bottom: 0; left: 8px;
-      width: 2px; background: var(--border);
-    }
+    .timeline::before { content: ""; position: absolute; top: 0; bottom: 0; left: 8px; width: 2px; background: var(--border); }
     .timeline__item { position: relative; margin: 12px 0 18px; }
     .timeline__dot {
-      position: absolute;
-      left: -2px; top: 6px;
-      width: 12px; height: 12px;
-      background: var(--accent-2);
-      border-radius: 50%;
-      box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.20);
+      position: absolute; left: -2px; top: 6px; width: 12px; height: 12px;
+      background: var(--accent-2); border-radius: 50%; box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.20);
     }
     .timeline__content h3 { margin: 0 0 6px; }
 
@@ -185,10 +118,7 @@
     .contact {
       display: flex; flex-wrap: wrap; gap: 18px;
       align-items: center; justify-content: space-between;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 14px 16px;
+      background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px;
     }
 
     /* Buttons */
@@ -197,14 +127,7 @@
     .btn--ghost { background: transparent; color: var(--text); }
 
     /* Footer */
-    .footer {
-      margin: 30px auto 50px;
-      max-width: 980px;
-      padding: 20px;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
-      text-align: center;
-    }
+    .footer { margin: 30px auto 50px; max-width: 980px; padding: 20px; color: var(--muted); border-top: 1px solid var(--border); text-align: center; }
     .footer__nav { display: flex; gap: 10px; justify-content: center; margin-top: 8px; }
     .footer__nav a { color: var(--muted); text-decoration: none; }
     .footer__nav a:hover { color: var(--accent); }
@@ -221,12 +144,12 @@
   <main>
     <!-- ===== HEADER / NAV ===== -->
     <nav class="header__nav" aria-label="Primary">
-      #aboutAbout</a>
-      #skillsSkills</a>
+      <a href="#about
+      <a href="#skills>
       #projectsProjects</a>
       #experienceExperience</a>
       <a href="#certstions</a>
-      #contactContact</a>
+      <a href="#ntact</a>
     </nav>
 
     <!-- ===== HERO ===== -->
@@ -236,12 +159,10 @@
         <p class="hero__subtitle">Power Platform Developer</p>
 
         <div class="hero__cta">
-          <a class="btnMe</a>
-          <a class="btn btn--primary" href   </div>
-
-        <p class="hero__contact">
+          #contactHire Me</a>
+          <a class="btn btn--primary" href="#projects        <p class="hero__contact">
           📞 tel:+919095707746+91‑9095707746</a> •
-          ✉️ <a href="mailto:ck167@gmail.comiamkarthick167@gmail.com</a>
+          ✉️ <a href="mailto:iamkarthick167@gmail.comck167@gmail.com</a>
         </p>
       </div>
     </section>
@@ -285,7 +206,78 @@
       <h2 class="section__title" id="projects-title">Featured Projects</h2>
 
       <div class="grid">
-        <!-- Timesheet Management Application -->
+        <!-- Danske Bank (as requested) -->
+        <article class="card">
+          <div class="card__header">
+            <h3 class="card__title">Danske Bank</h3>
+            <ul class="tags">
+              <li class="tag">Model‑driven App</li>
+              <li class="tag">Canvas Page</li>
+              <li class="tag">Dataverse</li>
+              <li class="tag">PCF</li>
+            </ul>
+          </div>
+          <p class="card__summary">
+            Developed a custom Canvas page integrated into a Model‑driven application for Danske Bank to enhance user experience in managing meeting‑related data. The solution provided a seamless interface for viewing and interacting with meeting details, project codes, and associated tasks within the bank’s internal system.
+          </p>
+          <p class="muted"><strong>Impact:</strong> Created Canvas Page from Scratch to book meeting for the users in Model‑driven App which is integrated with canvas App</p>
+          <ul class="list">
+            <li>Created Canvas Standalone Page Using Power Apps Studio and hosted in Model‑driven App to book meeting</li>
+            <li>Configured Business Rules, and Business Process flows and created gen pages With Model‑driven App for the Smooth Application Process.</li>
+            <li>Approval flows with Power Automate.</li>
+            <li>Dataverse table relationships and business rules</li>
+            <li>Used Component control to enhance the user experience in Model‑driven App</li>
+            <li>Used Power Automate to send notification emails to the users regarding their meeting details and reminders.</li>
+            <li>Used Power BI to create interactive dashboards and reports for visualizing meeting data and project codes.</li>
+          </ul>
+        </article>
+
+        <!-- Power Insurance (as requested) -->
+        <article class="card">
+          <div class="card__header">
+            <h3 class="card__title">Power Insurance — Canvas page embedded in Model‑driven App</h3>
+            <ul class="tags">
+              <li class="tag">Canvas</li>
+              <li class="tag">Model‑driven</li>
+              <li class="tag">Dataverse</li>
+              <li class="tag">Power BI</li>
+            </ul>
+          </div>
+          <p class="card__summary">
+            Canvas pages inside a Model‑driven app to surface quotes, dashboards, and insights. UI features like expand/collapse and read‑only states for smoother operations.
+          </p>
+          <p class="muted"><strong>Impact:</strong> Stakeholders get a unified view with better data insights and fewer context switches.</p>
+          <ul class="list">
+            <li>Version restore handling to recover UI changes</li>
+            <li>Critical bug fixes and unit testing discipline</li>
+            <li>Dashboard and chart integration</li>
+          </ul>
+        </article>
+
+        <!-- Library Management (as requested) -->
+        <article class="card">
+          <div class="card__header">
+            <h3 class="card__title">Library Management</h3>
+            <ul class="tags">
+              <li class="tag">Model‑driven App</li>
+              <li class="tag">Power Automate</li>
+              <li class="tag">Dataverse</li>
+              <li class="tag">PCF</li>
+            </ul>
+          </div>
+          <p class="card__summary">
+            End‑to‑end lending flow with BPF stages (allocation, approval). Reminder emails before due dates; penalty calculation via business rules; barcode scanning via PCF.
+          </p>
+          <p class="muted"><strong>Impact:</strong> Faster checkouts and on‑time returns with automated reminders and scanning.</p>
+          <ul class="list">
+            <li>Barcode PCF configuration on forms</li>
+            <li>Penalty logic via Business Rules</li>
+            <li>Approval flows with Power Automate</li>
+            <li>Used Barcode Controls to Scan the Detect ISBN directly using Mobile App</li>
+          </ul>
+        </article>
+
+        <!-- (Optional) Timesheet Management — kept for completeness; you can remove if not needed -->
         <article class="card">
           <div class="card__header">
             <h3 class="card__title">Timesheet Management Application</h3>
@@ -306,82 +298,8 @@
             <li>Approval workflow design with Power Automate</li>
             <li>Solution export/import across environments</li>
             <li>Dataverse table relationships and business rules</li>
-            <li>Used Power Automate to send reminder emails for timesheet submissions and notify managers for approvals</li>
-            <li>Implemented SharePoint integration and List Form &amp; Command bar customization using Power Apps</li>
-          </ul>
-        </article>
-
-        <!-- Danske Bank -->
-        <article class="card">
-          <div class="card__header">
-            <h3 class="card__title">Danske Bank</h3>
-            <ul class="tags">
-              <li class="tag">Model‑driven App</li>
-              <li class="tag">Canvas Page</li>
-              <li class="tag">Dataverse</li>
-              <li class="tag">PCF</li>
-            </ul>
-          </div>
-          <p class="card__summary">
-            Developed a custom Canvas page integrated into a Model‑driven application to enhance user experience
-            in managing meeting‑related data—view meeting details, project codes, and associated tasks within the bank’s internal system.
-          </p>
-          <p class="muted"><strong>Impact:</strong> Created a Canvas page from scratch for users to book meetings directly inside the Model‑driven App (embedded Canvas).</p>
-          <ul class="list">
-            <li>Standalone Canvas page built in Power Apps Studio and hosted inside Model‑driven App</li>
-            <li>Configured Business Rules &amp; Business Process Flows; generated pages for smooth application flow</li>
-            <li>Approval flows with Power Automate</li>
-            <li>Dataverse table relationships and business rules</li>
-            <li>PCF/Component controls to enhance UX in the Model‑driven App</li>
-            <li>Notification emails and reminders via Power Automate</li>
-            <li>Power BI dashboards and reports for meeting data &amp; project codes</li>
-          </ul>
-        </article>
-
-        <!-- Power Insurance -->
-        <article class="card">
-          <div class="card__header">
-            <h3 class="card__title">Power Insurance — Canvas page embedded in Model‑driven App</h3>
-            <ul class="tags">
-              <li class="tag">Canvas</li>
-              <li class="tag">Model‑driven</li>
-              <li class="tag">Dataverse</li>
-              <li class="tag">Power BI</li>
-            </ul>
-          </div>
-          <p class="card__summary">
-            Canvas pages inside a Model‑driven app to surface quotes, dashboards, and insights.
-            UI features like expand/collapse and read‑only states for smoother operations.
-          </p>
-          <p class="muted"><strong>Impact:</strong> Unified view with better data insights and fewer context switches for stakeholders.</p>
-          <ul class="list">
-            <li>Version restore handling to recover UI changes</li>
-            <li>Critical bug fixes and unit testing discipline</li>
-            <li>Dashboard and chart integration</li>
-          </ul>
-        </article>
-
-        <!-- Library Management -->
-        <article class="card">
-          <div class="card__header">
-            <h3 class="card__title">Library Management</h3>
-            <ul class="tags">
-              <li class="tag">Model‑driven App</li>
-              <li class="tag">Power Automate</li>
-              <li class="tag">Dataverse</li>
-              <li class="tag">PCF</li>
-            </ul>
-          </div>
-          <p class="card__summary">
-            End‑to‑end lending flow with BPF stages (allocation, approval). Reminder emails before due dates;
-            penalty calculation via business rules; barcode scanning via PCF.
-          </p>
-          <p class="muted"><strong>Impact:</strong> Faster checkouts and on‑time returns with automated reminders and scanning.</p>
-          <ul class="list">
-            <li>Barcode PCF configuration on forms</li>
-            <li>Penalty logic via Business Rules</li>
-            <li>Approval flows with Power Automate</li>
-            <li>Used barcode controls to scan/detect ISBN directly using mobile app</li>
+            <li>Reminder emails for timesheet submission; manager notifications for approvals</li>
+            <li>SharePoint integration and List Form &amp; Command bar customization using Power Apps</li>
           </ul>
         </article>
       </div>
@@ -437,3 +355,30 @@
       <div class="contact">
         <div>
           <p><strong>Email:</strong> mailto:iamkarthick167@gmail.comiamkarthick167@gmail.com</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+91909570774607746</a></p>
+          <p><strong>LinkedIn:</strong> https://www.linkedin.com/in/muthu-karthick-m-a9972016bMy LinkedIn</a></p>
+          <p><strong>Location:</strong> Madurai, India</p>
+        </div>
+        <div>
+          mailto:iamkarthick167@gmail.comStart a Conversation</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      <p>© <span id="year">2025</span> • Muthu Karthick •</p>
+      <nav class="footer__nav" aria-label="Footer">
+        #skillsSkills</a>
+        #projectsProjects</a>
+        #contactContact</a>
+      </nav>
+    </footer>
+  </main>
+
+  <!-- Tiny JS to update year -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
