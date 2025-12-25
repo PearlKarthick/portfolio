@@ -1,90 +1,439 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Muthu Karthick | Power Platform Developer</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Muthu Karthick | Power Platform Developer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- ===== CSS (converted from your React page styles) ===== -->
+  <style>
+    /* Color system */
+    :root {
+      --bg: #0b1020;
+      --panel: #121933;
+      --panel-2: #0f1630;
+      --text: #E9EDF5;
+      --muted: #B7C0D9;
+      --accent: #5EEAD4;     /* teal-300 */
+      --accent-2: #60A5FA;   /* blue-400 */
+      --border: #1f2b4d;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body, main { height: 100%; }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(1200px 600px at 15% -10%, #162043 0%, var(--bg) 40%, #070B18 100%);
+      color: var(--text);
+    }
+
+    /* Header Navigation — right aligned, a little bit down, with rich hover */
+    .header__nav {
+      /* layout & position */
+      display: flex;
+      gap: 14px;
+      justify-content: flex-end; /* align links to the right */
+      align-items: center;
+
+      /* spacing: push it a bit down from the top of the hero */
+      margin: 18px auto 14px; /* top, horizontal auto, bottom */
+      max-width: 980px;
+      padding: 10px 14px;
+
+      /* look & feel */
+      background: rgba(11, 16, 32, 0.45);
+      backdrop-filter: saturate(120%) blur(6px);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+
+      /* optional subtle drop shadow */
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    /* Individual links */
+    .header__nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 8px 10px;
+      border-radius: 8px;
+      transition:
+        color 140ms ease,
+        background-color 140ms ease,
+        transform 140ms ease;
+    }
+
+    /* Per‑link hover */
+    .header__nav a:hover {
+      color: var(--accent);
+      background: rgba(96, 165, 250, 0.10);
+      transform: translateY(-1px);
+    }
+
+    /* Hover the entire nav: make ALL links glow */
+    .header__nav:hover a { color: var(--accent); }
+
+    /* Optional: when hovering nav, also add a subtle background to all links */
+    .header__nav:hover a { background: rgba(96, 165, 250, 0.06); }
+
+    /* Mobile tweaks: keep it readable and wrapped */
+    @media (max-width: 640px) {
+      .header__nav {
+        flex-wrap: wrap;
+        justify-content: flex-end; /* still right aligned on small screens */
+        margin: 14px auto 12px;
+        padding: 8px 10px;
+        gap: 10px;
+      }
+      .header__nav a {
+        font-size: 0.9rem;
+        padding: 6px 8px;
+      }
+    }
+
+    /* Utilities */
+    .muted { color: var(--muted); }
+    .lead { font-size: 1.05rem; line-height: 1.7; }
+
+    /* HERO */
+    .hero {
+      padding: 96px 20px 60px;
+      background:
+        radial-gradient(800px 300px at 80% 0%, rgba(96, 165, 250, 0.15) 0%, rgba(96, 165, 250, 0) 60%),
+        radial-gradient(700px 280px at 0% 10%, rgba(94, 234, 212, 0.18) 0%, rgba(94, 234, 212, 0) 60%);
+      border-bottom: 1px solid var(--border);
+    }
+    .hero__content { max-width: 980px; margin: 0 auto; text-align: center; }
+    .hero__title { font-size: 3rem; margin: 0 0 10px; letter-spacing: 0.5px; }
+    .hero__subtitle { margin: 0 auto 22px; max-width: 820px; color: var(--muted); }
+    .hero__cta { display: flex; justify-content: center; gap: 12px; margin-bottom: 10px; }
+    .hero__contact a { color: var(--accent); text-decoration: none; }
+    .hero__contact { color: var(--muted); }
+
+    /* Sections */
+    .section { max-width: 980px; margin: 0 auto; padding: 42px 20px; }
+    .section__title { font-size: 1.6rem; margin: 0 0 14px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+
+    /* Chips / Tags */
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; padding: 0; list-style: none; }
+    .chip {
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 4px 0 0; }
+    .tag {
+      background: #0c1738;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+    }
+
+    /* Grid */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+
+    /* Card */
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 16px 18px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+    }
+    .card__header { margin-bottom: 4px; }
+    .card__title { margin: 0; font-size: 1.15rem; color: var(--accent); }
+    .card__summary { margin: 10px 0 8px; }
+
+    /* A clean list style for highlights and certs */
+    .list { margin: 8px 0 0; padding-left: 18px; }
+    .list li { margin: 6px 0; }
+
+    /* Timeline */
+    .timeline { position: relative; margin: 10px 0; padding-left: 20px; }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 0; bottom: 0; left: 8px;
+      width: 2px; background: var(--border);
+    }
+    .timeline__item { position: relative; margin: 12px 0 18px; }
+    .timeline__dot {
+      position: absolute;
+      left: -2px; top: 6px;
+      width: 12px; height: 12px;
+      background: var(--accent-2);
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.20);
+    }
+    .timeline__content h3 { margin: 0 0 6px; }
+
+    /* Contact */
+    .contact {
+      display: flex; flex-wrap: wrap; gap: 18px;
+      align-items: center; justify-content: space-between;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+
+    /* Buttons */
+    .btn { display: inline-block; padding: 10px 14px; border-radius: 10px; font-weight: 600; text-decoration: none; border: 1px solid var(--border); }
+    .btn--primary { background: linear-gradient(90deg, var(--accent), var(--accent-2)); color: #0b1020; border: none; }
+    .btn--ghost { background: transparent; color: var(--text); }
+
+    /* Footer */
+    .footer {
+      margin: 30px auto 50px;
+      max-width: 980px;
+      padding: 20px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .footer__nav { display: flex; gap: 10px; justify-content: center; margin-top: 8px; }
+    .footer__nav a { color: var(--muted); text-decoration: none; }
+    .footer__nav a:hover { color: var(--accent); }
+
+    /* Responsive */
+    @media (max-width: 520px) {
+      .hero__title { font-size: 2.4rem; }
+      .contact { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
 </head>
+
 <body>
-<header>
-    <h1>Muthu Karthick</h1>
-    <h2>Power Platform Developer</h2>
-    <p>6+ Years Experience  </p>
-</header>
-<section id="about">
-    <h3>About Me</h3>
-    <p>
-        I am a Power Platform Developer with 6 years of total IT experience, including
-        4+ years of hands-on expertise in designing, developing, and delivering business
+  <main>
+    <!-- ===== HEADER / NAV ===== -->
+    <nav class="header__nav" aria-label="Primary">
+      #aboutAbout</a>
+      #skillsSkills</a>
+      #projectsProjects</a>
+      #experienceExperience</a>
+      <a href="#certstions</a>
+      #contactContact</a>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="hero__content">
+        <h1 class="hero__title" id="hero-title">Muthu Karthick</h1>
+        <p class="hero__subtitle">Power Platform Developer</p>
+
+        <div class="hero__cta">
+          <a class="btnMe</a>
+          <a class="btn btn--primary" href   </div>
+
+        <p class="hero__contact">
+          📞 tel:+919095707746+91‑9095707746</a> •
+          ✉️ <a href="mailto:ck167@gmail.comiamkarthick167@gmail.com</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="section" id="about" aria-labelledby="about-title">
+      <h2 class="section__title" id="about-title">About</h2>
+      <p class="lead">
+        I am a Power Platform Developer with 6 years of total experience, including
+        4+ years of hands‑on expertise in designing, developing, and delivering business
         solutions using Microsoft Power Platform. I specialize in building scalable,
-        user-friendly, and automated solutions that improve business efficiency.
+        user‑friendly, and automated solutions that improve business efficiency.
         I enjoy transforming business requirements into technical solutions and
-        collaborating closely with stakeholders and cross-functional teams.
-    </p>
-</section>
-<section id="skills">
-    <h3>Skills</h3>
-    <div class="skill-group">
-        <h4>Power Platform</h4>
-        <ul>
-            <li>Power Apps (Canvas & Model-Driven Apps)</li>
-            <li>Power Automate (Cloud Flows, Approvals, Integrations)</li>
-            <li>Power Pages</li>
-            <li>Dataverse</li>
-        </ul>
-    </div>
-    <div class="skill-group">
-        <h4>Integrations</h4>
-        <ul>
-            <li>SharePoint</li>
-            <li>APIs & Connectors</li>
-            <li>SQL Server</li>
-        </ul>
-    </div>
-    <div class="skill-group">
-        <h4>Development & Customization</h4>
-        <ul>
-            <li>Custom Business Solutions</li>
-            <li>Role-based Access & Security</li>
-            <li>UI/UX Optimization</li>
-            <li>SharePoint Customization</li>
-        </ul>
-    </div>
-</section>
-<section id="projects">
-    <h3>Projects</h3>
-    <div class="project">
-        <h4>Timesheet Canvas App</h4>
-        <ul>
-            <li>Designed and developed Canvas and Model-Driven Apps based on business requirements</li>
-            <li>Built end-to-end automated workflows using Power Automate</li>
-            <li>Developed custom business solutions to replace manual processes</li>
-            <li>Integrated applications with SharePoint, SQL, Excel, and external data sources</li>
-            <li>SharePoint list form & command bar customization using JSON formatting</li>
-            <li>Ensured application security, performance, and scalability</li>
-        </ul>
-    </div>
-</section>
-<section id="contact">
-    <h3>Contact</h3>
-    <p>
-        📧 Email:
-        <a href="mailto:iamkarthick167@gmail.com">
-            iamkarthick167@gmail.com
-        </a>
-    </p>
-    <p>
-        📞 Phone:
-        <a href="tel:+919095707746">
-            +91 9095707746
-        </a>
-    </p>
-    <p>
-        🔗 LinkedIn:
-        <a href="https://www.linkedin.com/in/muthu-karthick-m-a9972016b" target="_blank">
-            linkedin/Muthu_Karthick
-        </a>
-    </p>
-</section>
-</body>
-</html>
+        collaborating closely with stakeholders and cross‑functional teams.
+      </p>
+      <p class="muted">
+        I enjoy turning requirements into intuitive screens, reusable components, and
+        clear flows—so users spend less time on manual steps and more time delivering value.
+      </p>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section class="section" id="skills" aria-labelledby="skills-title">
+      <h2 class="section__title" id="skills-title">Skills</h2>
+      <ul class="chips">
+        <li class="chip">Power Apps (Canvas &amp; Model‑driven)</li>
+        <li class="chip">Microsoft Copilot</li>
+        <li class="chip">Power Pages</li>
+        <li class="chip">Power Automate</li>
+        <li class="chip">Dataverse</li>
+        <li class="chip">SharePoint</li>
+        <li class="chip">Power BI</li>
+        <li class="chip">Solutions Deployment Using Pipelines</li>
+        <li class="chip">Microsoft Forms</li>
+        <li class="chip">OneDrive</li>
+      </ul>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section class="section" id="projects" aria-labelledby="projects-title">
+      <h2 class="section__title" id="projects-title">Featured Projects</h2>
+
+      <div class="grid">
+        <!-- Timesheet Management Application -->
+        <article class="card">
+          <div class="card__header">
+            <h3 class="card__title">Timesheet Management Application</h3>
+            <ul class="tags">
+              <li class="tag">Canvas App</li>
+              <li class="tag">Power Automate</li>
+              <li class="tag">Dataverse</li>
+              <li class="tag">SharePoint</li>
+            </ul>
+          </div>
+          <p class="card__summary">
+            End‑to‑end time entry and approvals for project teams. Built reminder flows, Canvas UX,
+            Dataverse tables &amp; business rules, and packaged solutions for environment moves.
+          </p>
+          <p class="muted"><strong>Impact:</strong> Improved on‑time submissions and reduced manual follow‑ups with automated reminders.</p>
+          <ul class="list">
+            <li>Reusable component library for forms &amp; galleries</li>
+            <li>Approval workflow design with Power Automate</li>
+            <li>Solution export/import across environments</li>
+            <li>Dataverse table relationships and business rules</li>
+            <li>Used Power Automate to send reminder emails for timesheet submissions and notify managers for approvals</li>
+            <li>Implemented SharePoint integration and List Form &amp; Command bar customization using Power Apps</li>
+          </ul>
+        </article>
+
+        <!-- Danske Bank -->
+        <article class="card">
+          <div class="card__header">
+            <h3 class="card__title">Danske Bank</h3>
+            <ul class="tags">
+              <li class="tag">Model‑driven App</li>
+              <li class="tag">Canvas Page</li>
+              <li class="tag">Dataverse</li>
+              <li class="tag">PCF</li>
+            </ul>
+          </div>
+          <p class="card__summary">
+            Developed a custom Canvas page integrated into a Model‑driven application to enhance user experience
+            in managing meeting‑related data—view meeting details, project codes, and associated tasks within the bank’s internal system.
+          </p>
+          <p class="muted"><strong>Impact:</strong> Created a Canvas page from scratch for users to book meetings directly inside the Model‑driven App (embedded Canvas).</p>
+          <ul class="list">
+            <li>Standalone Canvas page built in Power Apps Studio and hosted inside Model‑driven App</li>
+            <li>Configured Business Rules &amp; Business Process Flows; generated pages for smooth application flow</li>
+            <li>Approval flows with Power Automate</li>
+            <li>Dataverse table relationships and business rules</li>
+            <li>PCF/Component controls to enhance UX in the Model‑driven App</li>
+            <li>Notification emails and reminders via Power Automate</li>
+            <li>Power BI dashboards and reports for meeting data &amp; project codes</li>
+          </ul>
+        </article>
+
+        <!-- Power Insurance -->
+        <article class="card">
+          <div class="card__header">
+            <h3 class="card__title">Power Insurance — Canvas page embedded in Model‑driven App</h3>
+            <ul class="tags">
+              <li class="tag">Canvas</li>
+              <li class="tag">Model‑driven</li>
+              <li class="tag">Dataverse</li>
+              <li class="tag">Power BI</li>
+            </ul>
+          </div>
+          <p class="card__summary">
+            Canvas pages inside a Model‑driven app to surface quotes, dashboards, and insights.
+            UI features like expand/collapse and read‑only states for smoother operations.
+          </p>
+          <p class="muted"><strong>Impact:</strong> Unified view with better data insights and fewer context switches for stakeholders.</p>
+          <ul class="list">
+            <li>Version restore handling to recover UI changes</li>
+            <li>Critical bug fixes and unit testing discipline</li>
+            <li>Dashboard and chart integration</li>
+          </ul>
+        </article>
+
+        <!-- Library Management -->
+        <article class="card">
+          <div class="card__header">
+            <h3 class="card__title">Library Management</h3>
+            <ul class="tags">
+              <li class="tag">Model‑driven App</li>
+              <li class="tag">Power Automate</li>
+              <li class="tag">Dataverse</li>
+              <li class="tag">PCF</li>
+            </ul>
+          </div>
+          <p class="card__summary">
+            End‑to‑end lending flow with BPF stages (allocation, approval). Reminder emails before due dates;
+            penalty calculation via business rules; barcode scanning via PCF.
+          </p>
+          <p class="muted"><strong>Impact:</strong> Faster checkouts and on‑time returns with automated reminders and scanning.</p>
+          <ul class="list">
+            <li>Barcode PCF configuration on forms</li>
+            <li>Penalty logic via Business Rules</li>
+            <li>Approval flows with Power Automate</li>
+            <li>Used barcode controls to scan/detect ISBN directly using mobile app</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== EXPERIENCE ===== -->
+    <section class="section" id="experience" aria-labelledby="exp-title">
+      <h2 class="section__title" id="exp-title">Experience</h2>
+      <div class="timeline">
+        <div class="timeline__item">
+          <span class="timeline__dot" aria-hidden="true"></span>
+          <div class="timeline__content">
+            <h3>Software Engineer — HCL Technologies</h3>
+            <p class="muted">Madurai • Dec 2021 — Present</p>
+            <p>Power Platform developer delivering Canvas/Model‑driven apps, Dataverse entities, approval flows, and Power Pages. Comfortable owning features end‑to‑end: design, build, test, and deploy.</p>
+          </div>
+        </div>
+
+        <div class="timeline__item">
+          <span class="timeline__dot" aria-hidden="true"></span>
+          <div class="timeline__content">
+            <h3>Operations Associate — Solartis Technologies Ltd</h3>
+            <p class="muted">Madurai</p>
+            <p>Operations and process improvement with an eye for data accuracy and service levels—experience that translates into reliable app behaviors and user empathy.</p>
+          </div>
+        </div>
+
+        <div class="timeline__item">
+          <span class="timeline__dot" aria-hidden="true"></span>
+          <div class="timeline__content">
+            <h3>Process Engineer — TSMT Technology Ltd</h3>
+            <p class="muted">Chengalpattu</p>
+            <p>Manufacturing/process exposure—strong foundation in structured workflows and quality checks, useful for designing robust BPFs and approval logic in apps.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CERTIFICATIONS ===== -->
+    <section class="section" id="certs" aria-labelledby="certs-title">
+      <h2 class="section__title" id="certs-title">Certifications</h2>
+      <ul class="list">
+        <li>Microsoft Certified: Power Platform App Maker Associate (PL‑100)</li>
+        <li>Microsoft Certified: Power Platform Fundamentals (PL‑900)</li>
+        <li>Microsoft Certified: Dynamics 365 Fundamentals (CRM) (MB‑910)</li>
+        <li>Building Intelligent Copilots With GenAI</li>
+      </ul>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <h2 class="section__title" id="contact-title">Contact</h2>
+      <div class="contact">
+        <div>
+          <p><strong>Email:</strong> mailto:iamkarthick167@gmail.comiamkarthick167@gmail.com</a></p>
