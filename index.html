@@ -1,99 +1,90 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Muthu Karthick | Power Platform Developer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- ========= Inline CSS (no external dependencies) ========= -->
-  <style>
-    /* ========= THEME ========= */
-    :root{
-      --mk-bg:#f6f7fb;
-      --mk-surface:#ffffff;
-      --mk-primary:#4f46e5;   /* Indigo-600 */
-      --mk-primary-2:#3b82f6; /* Blue-500 */
-      --mk-accent:#10b981;    /* Emerald-500 */
-      --mk-text:#1f2937;      /* Gray-800 */
-      --mk-muted:#6b7280;     /* Gray-500 */
-      --mk-ring:#dbeafe;      /* Blue-100 */
-      --mk-card:#f9fafb;      /* Gray-50 */
-      --mk-sidebar:#0f172a;   /* Slate-900 */
-      --mk-sidebar-2:#1e293b; /* Slate-800 */
-    }
-    html{scroll-behavior:smooth;}
-    body{
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: var(--mk-bg);
-      color: var(--mk-text);
-      line-height: 1.6;
-      margin:0;
-    }
-
-    /* ========= LAYOUT ========= */
-    .mk-wrapper{display:flex; min-height:100vh;}
-
-    /* Sidebar */
-    .mk-sidebar{
-      width:280px; flex:0 0 280px;
-      background: linear-gradient(180deg, var(--mk-sidebar), var(--mk-sidebar-2));
-      color:#e5e7eb;
-      position:sticky; top:0; height:100vh; overflow:auto;
-      padding:24px 16px; box-shadow:0 10px 30px rgba(0,0,0,.25);
-      z-index: 2;
-    }
-    .mk-brand{
-      display:flex; align-items:center; gap:12px; padding:12px 10px; border-radius:12px;
-      background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08);
-    }
-    .mk-avatar{
-      width:48px; height:48px; border-radius:50%; display:flex; align-items:center; justify-content:center;
-      background: linear-gradient(135deg, var(--mk-primary), var(--mk-primary-2)); color:#fff; font-weight:700; letter-spacing:1px;
-      box-shadow:0 6px 16px rgba(79,70,229,.35);
-    }
-    .mk-name{font-weight:700; margin:0;}
-    .mk-role{font-size:.9rem; margin:0; color:#cbd5e1;}
-
-    .mk-nav{margin-top:18px;}
-    .mk-nav a{
-      display:flex; align-items:center; gap:.6rem;
-      color:#e5e7eb; text-decoration:none; padding:.6rem .75rem; border-radius:10px; opacity:.9;
-      transition:all .18s ease;
-    }
-    .mk-nav a:hover{background:rgba(255,255,255,.08); color:#fff; opacity:1; transform:translateX(3px);}
-    .mk-nav a.active{background:rgba(255,255,255,.16); color:#fff; box-shadow:inset 0 0 0 1px rgba(255,255,255,.10);}
-    .mk-social a{color:#cbd5e1; margin-right:12px; font-size:1.1rem; text-decoration:none;}
-    .mk-social a:hover{color:#fff;}
-
-    .mk-content{flex:1; padding-left:280px; position:relative; z-index:1;}
-    .mk-section{
-      max-width:1000px; margin:28px auto; background:var(--mk-surface); padding:30px 28px;
-      border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,.08); position:relative;
-    }
-    .mk-section h2{color:var(--mk-primary); font-weight:700; margin-bottom:14px;}
-    .mk-lead{color:var(--mk-muted); margin-bottom:6px;}
-    .mk-section-header{display:flex; align-items:center; justify-content:space-between; gap:10px;}
-    .hint{color:var(--mk-muted); font-size:.95rem;}
-
-    /* Hero */
-    .mk-hero{
-      padding:64px 28px;
-      background:
-        radial-gradient(1200px 400px at 10% 10%, var(--mk-ring), transparent 60%),
-        radial-gradient(1200px 500px at 90% 0%, #ecfeff, transparent 60%),
-        linear-gradient(135deg, #eef2ff, #ffffff);
-      border-radius:18px; box-shadow:0 12px 36px rgba(79,70,229,.12);
-    }
-    .mk-hero h1{font-size:2.2rem; margin:0 0 .35rem;}
-    .subtitle{font-weight:500; color:var(--mk-muted);}
-
-    /* Badges */
-    .badge{
-      display:inline-block; margin-right:8px; margin-bottom:8px; padding:.55rem .7rem; border-radius:999px; font-weight:600;
-    }
-    .text-bg-primary{background:#4f46e5; color:#fff;}
-    .text-bg-success{background:#10b981; color:#fff;}
-    .text-bg-info{background:#0ea5e9; color:#fff;}
-    .text-bg-secondary{background:#64748b; color:#fff;}
-    .text-bg-warning{background:#f59e0b; color:#111827;}
+    <meta charset="UTF-8">
+    <title>Muthu Karthick | Power Platform Developer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h1>Muthu Karthick</h1>
+    <h2>Power Platform Developer</h2>
+    <p>6+ Years Experience  </p>
+</header>
+<section id="about">
+    <h3>About Me</h3>
+    <p>
+        I am a Power Platform Developer with 6 years of total IT experience, including
+        4+ years of hands-on expertise in designing, developing, and delivering business
+        solutions using Microsoft Power Platform. I specialize in building scalable,
+        user-friendly, and automated solutions that improve business efficiency.
+        I enjoy transforming business requirements into technical solutions and
+        collaborating closely with stakeholders and cross-functional teams.
+    </p>
+</section>
+<section id="skills">
+    <h3>Skills</h3>
+    <div class="skill-group">
+        <h4>Power Platform</h4>
+        <ul>
+            <li>Power Apps (Canvas & Model-Driven Apps)</li>
+            <li>Power Automate (Cloud Flows, Approvals, Integrations)</li>
+            <li>Power Pages</li>
+            <li>Dataverse</li>
+        </ul>
+    </div>
+    <div class="skill-group">
+        <h4>Integrations</h4>
+        <ul>
+            <li>SharePoint</li>
+            <li>APIs & Connectors</li>
+            <li>SQL Server</li>
+        </ul>
+    </div>
+    <div class="skill-group">
+        <h4>Development & Customization</h4>
+        <ul>
+            <li>Custom Business Solutions</li>
+            <li>Role-based Access & Security</li>
+            <li>UI/UX Optimization</li>
+            <li>SharePoint Customization</li>
+        </ul>
+    </div>
+</section>
+<section id="projects">
+    <h3>Projects</h3>
+    <div class="project">
+        <h4>Timesheet Canvas App</h4>
+        <ul>
+            <li>Designed and developed Canvas and Model-Driven Apps based on business requirements</li>
+            <li>Built end-to-end automated workflows using Power Automate</li>
+            <li>Developed custom business solutions to replace manual processes</li>
+            <li>Integrated applications with SharePoint, SQL, Excel, and external data sources</li>
+            <li>SharePoint list form & command bar customization using JSON formatting</li>
+            <li>Ensured application security, performance, and scalability</li>
+        </ul>
+    </div>
+</section>
+<section id="contact">
+    <h3>Contact</h3>
+    <p>
+        📧 Email:
+        <a href="mailto:iamkarthick167@gmail.com">
+            iamkarthick167@gmail.com
+        </a>
+    </p>
+    <p>
+        📞 Phone:
+        <a href="tel:+919095707746">
+            +91 9095707746
+        </a>
+    </p>
+    <p>
+        🔗 LinkedIn:
+        <a href="https://www.linkedin.com/in/muthu-karthick-m-a9972016b" target="_blank">
+            linkedin/Muthu_Karthick
+        </a>
+    </p>
+</section>
+</body>
+</html>
