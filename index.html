@@ -166,13 +166,13 @@ body{
       </div>
     </div>
     <nav class="sidenav" id="sidenav" aria-label="Page navigation">
-      #homeHome</a>
-      #aboutAbout</a>
-      #skillsSkills</a>
-      #projectsProjects</a>
-      #experienceExperience</a>
-      #certsCertifications</a>
-      #contactContact</a>
+  <a href=#home>Home</a>
+      <a href=#about>About</a>
+      <a href=#skills>Skills</a>
+      <a href=#projects>Projects</a>
+      <a href=#experience>Experience</a>
+      <a href=#certs>Certifications</a>
+      <a href=#contact>Contact</a>
     </nav>
   </aside>
 
@@ -183,10 +183,14 @@ body{
       <section class="hero" id="home" aria-labelledby="hero-title">
         <h1 class="hero__title" id="hero-title">Muthu Karthick</h1>
         <p class="hero__subtitle">Power Platform Developer</p>
-        <div class="hero__cta">
-          #projectsView Projects</a>
-          #contactGet in Touch</a>
-        </div>
+<div class="hero__cta">
+  <button class="btn btn--primary" onclick="document.querySelector('#projects').scrollIntoView({behavior:'smooth'})">
+    View Projects
+  </button>
+  <button class="btn btn--primary" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">
+    Get in Touch
+  </button>
+</div>
       </section>
 
       <!-- About -->
@@ -305,26 +309,21 @@ body{
         <h2 class="section__title" id="exp-title">Experience</h2>
         <div class="timeline">
           <div class="timeline__item">
-            <span class="timeline__dot" aria-hidden="true"></span>
             <div class="timeline__content">
               <h3>Software Engineer — HCL Technologies</h3>
-              <p class="muted">Madurai • Dec 2021 — Present</p>
+              <p class="muted">Dec 2021 — Present</p>
               <p>Power Platform developer delivering Canvas/Model‑driven apps, Dataverse entities, approval flows, and Power Pages. Comfortable owning features end‑to‑end: design, build, test, and deploy.</p>
             </div>
           </div>
           <div class="timeline__item">
-            <span class="timeline__dot" aria-hidden="true"></span>
             <div class="timeline__content">
               <h3>Operations Associate — Solartis Technologies Ltd</h3>
-              <p class="muted">Madurai</p>
               <p>Operations and process improvement with an eye for data accuracy and service levels—experience that translates into reliable app behaviors and user empathy.</p>
             </div>
           </div>
           <div class="timeline__item">
-            <span class="timeline__dot" aria-hidden="true"></span>
             <div class="timeline__content">
               <h3>Process Engineer — TSMT Technology Ltd</h3>
-              <p class="muted">Chengalpattu</p>
               <p>Manufacturing/process exposure—strong foundation in structured workflows and quality checks, useful for designing robust BPFs and approval logic in apps.</p>
             </div>
           </div>
@@ -345,24 +344,21 @@ body{
       <!-- Contact -->
       <section class="section" id="contact" aria-labelledby="contact-title">
         <h2 class="section__title" id="contact-title">Contact</h2>
-        <div class="card">
-          <p><strong>Email:</strong> <span>iamkarthick167@gmail.com</span></p>
-          <p><strong>Phone:</strong> <span>+91‑9095707746</span></p>
-          <p><strong>LinkedIn:</strong> <span>linkedin.com/in/muthu-karthick-m-a9972016b</span></p>
-          <p><strong>Location:</strong> Madurai, India</p>
-          <div style="margin-top:10px;">
-            mailto:iamkarthick167@gmail.comStart a Conversation</a>
-          </div>
+ <div class="card">
+            <p><strong>Email:</strong> <a href="mailto:iamkarthick167@gmail.com">iamkarthick167@gmail.com</a></p>
+            <p><strong>Phone:</strong> <a href="tel:+919095707746">+91‑9095707746</a></p>
+            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/muthu-karthick-m-a9972016b" target="_blank">My LinkedIn</a></p>           
+        </div>
         </div>
       </section>
 
       <!-- Footer -->
       <footer class="footer">
-        <p>© <span id="year">2025</span> • Muthu Karthick</p>
+        <p>Thanks for Checking My Portfolio. Feel free to reach me out. Best Regards Muthu Karthick</p>
         <nav class="footer__nav" aria-label="Footer">
-          #skillsSkills</a>
-          #projectsProjects</a>
-          #contactContact</a>
+          <a href=#skills>Skills</a>
+          <a href=#projects>Projects</a>
+          <a href=#contactContact</a>
         </nav>
       </footer>
     </div>
