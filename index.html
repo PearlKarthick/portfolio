@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,11 +13,11 @@
   --panel-2:#0f1630;
   --text:#E9EDF5;
   --muted:#B7C0D9;
-  --accent:#5EEAD4;
-  --accent-2:#60A5FA;
+  --accent:#5EEAD4;     /* teal */
+  --accent-2:#60A5FA;   /* blue */
   --border:#1f2b4d;
   --sidebar-w:280px;
-  --page-w:980px; /* central column width */
+  --page-w:980px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -31,7 +32,7 @@ body{
 /* ===== Layout ===== */
 .layout{display:flex;min-height:100vh}
 
-/* Sidebar (left sticky) */
+/* Sidebar */
 .sidebar{
   width:var(--sidebar-w);
   flex:0 0 var(--sidebar-w);
@@ -55,7 +56,6 @@ body{
 .brand__name{margin:0; font-weight:700}
 .brand__role{margin:2px 0 0; color:var(--muted); font-size:.9rem}
 
-/* Side navigation */
 .sidenav{padding:14px; display:flex; flex-direction:column; gap:6px}
 .sidenav a{
   display:block; color:var(--muted); text-decoration:none; font-weight:600; font-size:.95rem;
@@ -65,33 +65,20 @@ body{
 .sidenav a:hover{
   color:var(--accent); background:rgba(96,165,250,.08); border-color:var(--border); transform:translateX(3px);
 }
-.sidenav a.active{
-  color:var(--accent); background:rgba(96,165,250,.10); border-color:var(--border);
-}
+.sidenav a.active{color:var(--accent); background:rgba(96,165,250,.10); border-color:var(--border)}
 
-/* ===== Content column: CENTER the page ===== */
+/* Content column (center page) */
 .content{
-  flex:1;
-  /* Remove the padding that was pushing content right */
-  padding-left:0;
-  /* Center the inner page column */
-  display:flex;
-  justify-content:center; /* center horizontally in available space */
-  align-items:flex-start; /* natural top alignment */
-  position:relative;
+  flex:1; padding-left:0; display:flex; justify-content:center; align-items:flex-start; position:relative;
 }
-
-/* Central page column */
 .page{
-  width:100%;
-  max-width:var(--page-w); /* fixed central width */
-  padding:24px 20px;
+  width:100%; max-width:var(--page-w); padding:24px 20px;
+  min-height:100vh; display:flex; flex-direction:column;
 }
 
-/* ===== Hero & Sections (centered within .page) ===== */
+/* ===== Hero & Sections ===== */
 .hero{
-  padding:56px 20px 36px;
-  margin-inline:auto; /* keep centered */
+  padding:56px 20px 36px; margin-inline:auto;
   background:
     radial-gradient(800px 300px at 80% 0%, rgba(96,165,250,.15) 0%, rgba(96,165,250,0) 60%),
     radial-gradient(700px 280px at 0% 10%, rgba(94,234,212,.18) 0%, rgba(94,234,212,0) 60%);
@@ -100,29 +87,51 @@ body{
 }
 .hero__title{font-size:2.4rem; margin:0 0 8px; letter-spacing:.3px}
 .hero__subtitle{margin:0 0 18px; color:var(--muted)}
-.hero__cta{display:flex; gap:10px; flex-wrap:wrap}
-.btn{display:inline-block; padding:10px 14px; border-radius:10px; font-weight:600; text-decoration:none; border:1px solid var(--border)}
-.btn--primary{background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#0b1020; border:none}
+.hero__cta{display:flex; gap:12px; flex-wrap:wrap}
 
+/* Buttons */
+.btn{
+  display:inline-block; padding:12px 18px; border-radius:12px;
+  font-weight:700; text-decoration:none; border:1px solid var(--border);
+  transition:transform .14s ease, box-shadow .14s ease, filter .14s ease, background-position .18s ease;
+  will-change:transform, box-shadow, filter, background-position;
+}
+.btn--primary{
+  background-image:linear-gradient(90deg,var(--accent),var(--accent-2));
+  color:#0b1020; border:none;
+  background-size:100% 100%;
+}
+
+/* 🔥 Hover / Active / Focus */
+.btn--primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 22px rgba(96,165,250,.25), 0 0 0 3px rgba(96,165,250,.25) inset;
+  filter:saturate(115%);
+  background-position:5% 0; /* subtle gradient shift */
+}
+.btn--primary:active{
+  transform:translateY(0); /* soft press */
+  box-shadow:0 6px 14px rgba(96,165,250,.20), 0 0 0 2px rgba(96,165,250,.20) inset;
+}
+.btn--primary:focus-visible{
+  outline:none;
+  box-shadow:0 0 0 3px rgba(94,234,212,.45), 0 0 0 6px rgba(96,165,250,.30);
+}
+
+/* Sections */
 .section{
-  margin:22px auto; /* center inside page */
-  padding:22px;
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:14px;
-  box-shadow:0 8px 26px rgba(0,0,0,.25);
+  margin:22px auto; padding:22px; background:var(--panel);
+  border:1px solid var(--border); border-radius:14px; box-shadow:0 8px 26px rgba(0,0,0,.25);
 }
 .section__title{font-size:1.6rem; margin:0 0 14px; padding-bottom:8px; border-bottom:1px solid var(--border)}
 .lead{font-size:1.05rem; line-height:1.7}
 .muted{color:var(--muted)}
 
-/* Chips & tags */
 .chips{display:flex; flex-wrap:wrap; gap:10px; list-style:none; padding:0; margin:0}
 .chip{background:var(--panel-2); border:1px solid var(--border); padding:8px 12px; border-radius:999px; font-size:.95rem}
 .tags{display:flex; flex-wrap:wrap; gap:8px; list-style:none; padding:0; margin:4px 0 0}
 .tag{background:#0c1738; border:1px solid var(--border); color:var(--muted); padding:4px 10px; border-radius:999px; font-size:.85rem}
 
-/* Grid & cards */
 .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px}
 .card{background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:16px 16px 18px; box-shadow:0 12px 40px rgba(0,0,0,.25)}
 .card__header{margin-bottom:4px}
@@ -131,20 +140,22 @@ body{
 .list{margin:8px 0 0; padding-left:18px}
 .list li{margin:6px 0}
 
-/* Timeline */
 .timeline{position:relative; margin:10px 0; padding-left:20px}
 .timeline::before{content:""; position:absolute; top:0; bottom:0; left:8px; width:2px; background:var(--border)}
 .timeline__item{position:relative; margin:12px 0 18px}
 .timeline__dot{position:absolute; left:-2px; top:6px; width:12px; height:12px; background:var(--accent-2); border-radius:50%; box-shadow:0 0 0 3px rgba(96,165,250,.20)}
 .timeline__content h3{margin:0 0 6px}
 
-/* Footer */
-.footer{max-width:var(--page-w); margin:16px auto 44px; color:var(--muted); text-align:center}
+/* Footer sticks to bottom when content is short */
+.footer{
+  max-width:var(--page-w); margin:16px auto 44px; color:var(--muted); text-align:center;
+  margin-top:auto;
+}
 .footer__nav{display:inline-flex; gap:10px; margin-top:6px}
 .footer__nav a{color:var(--muted); text-decoration:none}
 .footer__nav a:hover{color:var(--accent)}
 
-/* ===== Responsive ===== */
+/* Responsive */
 @media (max-width:900px){ :root{--sidebar-w:240px} }
 @media (max-width:720px){
   .sidebar{display:none}
@@ -165,31 +176,27 @@ body{
       </div>
     </div>
     <nav class="sidenav" id="sidenav" aria-label="Page navigation">
-  <a href=#home>Home</a>
-      <a href=#about>About</a>
-      <a href=#skills>Skills</a>
-      <a href=#projects>Projects</a>
-      <a href=#experience>Experience</a>
-      <a href=#certs>Certifications</a>
-      <a href=#contact>Contact</a>
+      #homeHome</a>
+      #aboutAbout</a>
+      #skillsSkills</a>
+      #projectsProjects</a>
+      #experienceExperience</a>
+      #certsCertifications</a>
+      #contactContact</a>
     </nav>
   </aside>
 
-  <!-- Content (centered column) -->
+  <!-- Content -->
   <div class="content">
     <div class="page">
       <!-- Hero -->
       <section class="hero" id="home" aria-labelledby="hero-title">
         <h1 class="hero__title" id="hero-title">Muthu Karthick</h1>
         <p class="hero__subtitle">Power Platform Developer</p>
-<div class="hero__cta">
-  <button class="btn btn--primary" onclick="document.querySelector('#projects').scrollIntoView({behavior:'smooth'})">
-    View Projects
-  </button>
-  <button class="btn btn--primary" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">
-    Get in Touch
-  </button>
-</div>
+        <div class="hero__cta">
+          <!-- ✅ Hover-enabled buttons -->
+          <a class="btn btn--primary" href     #contactGet in Touch</a>
+        </div>
       </section>
 
       <!-- About -->
@@ -255,33 +262,6 @@ body{
               <li>Power BI dashboards and reports for meeting data and project codes.</li>
             </ul>
           </article>
-<!-- TimeSheet -->
-          <article class="card">
-            <div class="card__header">
-              <h3 class="card__title">Danske Bank</h3>
-              <ul class="tags">
-                <li class="tag">Model‑driven App</li>
-                <li class="tag">Canvas Page</li>
-                <li class="tag">Dataverse</li>
-                <li class="tag">PCF</li>
-                <li class="tag">Sharepoint</li>
-              </ul>
-            </div>
-            <p class="card__summary">
-              Timesheet Management application provides the functionality to employees to Their working Time entry by selecting their project codes and Tasks. Timesheet power platform administrators can verify and approve Submission Entry.
-            </p>
-            <p class="muted"><strong>Impact:</strong> Created Canvas Page from scratch to book meetings for users inside the Model‑driven App (embedded Canvas).</p>
-            <ul class="list">
-              <li>Created Power Automate flows for Reminding user to fill time.</li>
-              <li>Developed Application screens by using the Canvas App </li>
-              <li>Worked on the galleries to display the data. </li>
-              <li>Dataverse table relationships and business rules.</li>
-              <li>Created SharePoint and connected as data source to canvas app</li>
-              <li>Designed Power Apps Components Library and reused across the solutions and environment. </li>
-              <li>Power BI dashboards and reports for meeting data and project codes.</li>
-              <li>Solution Deployment Using pipelines across the Environment</li>
-            </ul>
-          </article>
 
           <!-- Power Insurance -->
           <article class="card">
@@ -292,7 +272,6 @@ body{
                 <li class="tag">Model‑driven</li>
                 <li class="tag">Dataverse</li>
                 <li class="tag">Power BI</li>
-                <li class="tag">Power Pages</li>
               </ul>
             </div>
             <p class="card__summary">
@@ -303,7 +282,6 @@ body{
               <li>Version restore handling to recover UI changes.</li>
               <li>Critical bug fixes and unit testing discipline.</li>
               <li>Dashboard and chart integration.</li>
-              <li>Created Power pages for Power insurance sites that Shocases Information.</li>
             </ul>
           </article>
 
@@ -319,8 +297,8 @@ body{
               </ul>
             </div>
             <p class="card__summary">
-            Library System managed by Model Driven App which provide user to select the books based on their Title and ISBN Number. 
-              Business Process flows have been created to ensure every stages have passed such as book allocated , Approved by Library Admin and Flows are created for approval request and Reminder Email for the user to submit book prior Due date.             </p>
+              End‑to‑end lending flow with BPF stages (allocation, approval). Reminder emails before due dates; penalty calculation via business rules; barcode scanning via PCF.
+            </p>
             <p class="muted"><strong>Impact:</strong> Faster checkouts and on‑time returns with automated reminders and scanning.</p>
             <ul class="list">
               <li>Barcode PCF configuration on forms.</li>
@@ -337,21 +315,26 @@ body{
         <h2 class="section__title" id="exp-title">Experience</h2>
         <div class="timeline">
           <div class="timeline__item">
+            <span class="timeline__dot" aria-hidden="true"></span>
             <div class="timeline__content">
               <h3>Software Engineer — HCL Technologies</h3>
-              <p class="muted">Dec 2021 — Present</p>
+              <p class="muted">Madurai • Dec 2021 — Present</p>
               <p>Power Platform developer delivering Canvas/Model‑driven apps, Dataverse entities, approval flows, and Power Pages. Comfortable owning features end‑to‑end: design, build, test, and deploy.</p>
             </div>
           </div>
           <div class="timeline__item">
+            <span class="timeline__dot" aria-hidden="true"></span>
             <div class="timeline__content">
               <h3>Operations Associate — Solartis Technologies Ltd</h3>
+              <p class="muted">Madurai</p>
               <p>Operations and process improvement with an eye for data accuracy and service levels—experience that translates into reliable app behaviors and user empathy.</p>
             </div>
           </div>
           <div class="timeline__item">
+            <span class="timeline__dot" aria-hidden="true"></span>
             <div class="timeline__content">
               <h3>Process Engineer — TSMT Technology Ltd</h3>
+              <p class="muted">Chengalpattu</p>
               <p>Manufacturing/process exposure—strong foundation in structured workflows and quality checks, useful for designing robust BPFs and approval logic in apps.</p>
             </div>
           </div>
@@ -372,23 +355,32 @@ body{
       <!-- Contact -->
       <section class="section" id="contact" aria-labelledby="contact-title">
         <h2 class="section__title" id="contact-title">Contact</h2>
- <div class="card">
-            <p><strong>Email:</strong> <a href="mailto:iamkarthick167@gmail.com">iamkarthick167@gmail.com</a></p>
-            <p><strong>Phone:</strong> <a href="tel:+919095707746">+91‑9095707746</a></p>
-            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/muthu-karthick-m-a9972016b" target="_blank">My LinkedIn</a></p>           
+        <div class="card">
+          <p><strong>Email:</strong> <span>iamkarthick167@gmail.com</span></p>
+          <p><strong>Phone:</strong> <span>+91‑9095707746</span></p>
+          <p><strong>LinkedIn:</strong> <span>linkedin.com/in/muthu-karthick-m-a9972016b</span></p>
+          <p><strong>Location:</strong> Madurai, India</p>
+          <div style="margin-top:10px;">
+            <a class="btn btn--primary" href="mailto:iamkarthick167@gmail.com </div>
         </div>
-        </div>
-      </section>    
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <p>© <span id="year">2025</span> • Muthu Karthick</p>
+        <nav class="footer__nav" aria-label="Footer">
+          #skillsSkills</a>
+          #projectsProjects</a>
+          #contactContact</a>
+        </nav>
+      </footer>
     </div>
   </div>
 </div>
 
 <!-- ===== JS: Scrollspy & year ===== -->
 <script>
-  // Year
   document.getElementById('year').textContent = new Date().getFullYear();
-
-  // Scrollspy
   const navLinks = Array.from(document.querySelectorAll('#sidenav a'));
   const targets  = navLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
   function onScrollSpy(){
@@ -405,3 +397,4 @@ body{
 </script>
 </body>
 </html>
+
