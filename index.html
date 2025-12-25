@@ -37,11 +37,15 @@
       <!-- Hero -->
       <section class="hero" id="home" aria-labelledby="hero-title">
         <h1 class="hero__title" id="hero-title">Muthu Karthick</h1>
-        <p class="hero__subtitle">Power Platform Developer</p>
-        <div class="hero__cta">
-          <p href=#projects>ViewProjects</P>
-          <p href=#contact>Get in Touch</p>
-        </div>
+        <p class="hero__subtitle">Power Platform Developer</p>      
+<div class="hero__cta">
+  <button class="btn btn--primary" onclick="document.querySelector('#projects').scrollIntoView({behavior:'smooth'})">
+    View Projects
+  </button>
+  <button class="btn btn--primary" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">
+    Get in Touch
+  </button>
+</div>
       </section>
 
       <!-- About -->
