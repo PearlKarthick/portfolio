@@ -103,7 +103,12 @@ body{
 .hero__cta{display:flex; gap:10px; flex-wrap:wrap}
 .btn{display:inline-block; padding:10px 14px; border-radius:10px; font-weight:600; text-decoration:none; border:1px solid var(--border)}
 .btn--primary{background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#0b1020; border:none}
-
+.btn--primary:hover {
+    background: linear-gradient(90deg, var(--accent-2), var(--accent));
+    filter: brightness(95%);
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
 .section{
   margin:22px auto; /* center inside page */
   padding:22px;
